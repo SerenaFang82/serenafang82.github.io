@@ -1,0 +1,255 @@
+<!DOCTYPE HTML>
+<!--
+	Future Imperfect by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Serena Fang | Business Analyst Portfolio </title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets2/css/main.css" />
+	<!-- Prism.js core -->
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css">
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+	<!-- Language support for R -->
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-r.min.js"></script>
+	</head>
+	<body class="single is-preload">
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Header -->
+					<header id="header">
+						<h1><a href="index.html#Bank-project">Serena Fang | Business Analyst Portfolio</a></h1>
+						<!--
+						<nav class="links">
+							<ul>
+								<li><a href="#">Lorem</a></li>
+								<li><a href="#">Ipsum</a></li>
+								<li><a href="#">Feugiat</a></li>
+								<li><a href="#">Tempus</a></li>
+								<li><a href="#">Adipiscing</a></li>
+							</ul>
+						</nav>-->
+						<nav class="main">
+							<ul>
+								<li class="search">
+									<a class="fa-search" href="#search">Search</a>
+									<form id="search" method="get" action="#">
+										<input type="text" name="query" placeholder="Search" />
+									</form>
+								</li>
+								<li class="menu">
+									<a class="fa-bars" href="#menu">Menu</a>
+								</li>
+							</ul>
+						</nav>
+					</header>
+					
+
+				 <!-- Menu -->
+					<section id="menu"> 
+
+						<!-- Search -->
+						 	<section>
+								<form class="search" method="get" action="#">
+									<input type="text" name="query" placeholder="Search" />
+								</form>
+							</section> 
+
+						<!-- Links -->
+						 <section>
+								<ul class="links">
+									<li>
+										<a href="#">
+											<h3>Lorem ipsum</h3>
+											<p>Feugiat tempus veroeros dolor</p>
+										</a>
+									</li>
+									<li>
+										<a href="#">
+											<h3>Dolor sit amet</h3>
+											<p>Sed vitae justo condimentum</p>
+										</a>
+									</li>
+									<li>
+										<a href="#">
+											<h3>Feugiat veroeros</h3>
+											<p>Phasellus sed ultricies mi congue</p>
+										</a>
+									</li>
+									<li>
+										<a href="#">
+											<h3>Etiam sed consequat</h3>
+											<p>Porta lectus amet ultricies</p>
+										</a>
+									</li>
+								</ul>
+							</section> 
+
+						<!-- Actions -->
+							<section>
+								<ul class="actions stacked">
+									<li><a href="#" class="button large fit">Log In</a></li>
+								</ul>
+							</section> 
+
+					</section> 
+
+				<!-- Main -->
+					<div id="main">
+
+						<!-- Post -->
+							<article class="post">
+								<header>
+									<div class="title">
+										<h2>Banking on Behavior: How I Used R to Decode Customer Value</h2>
+										<p>R | Customer Segmentation | RFM analysis (Recency, Frequency, Monetary)</p>
+									</div>
+									<div class="meta">
+										<time class="published" datetime="2024-11">November, 2024</time>
+										<a href="https://www.linkedin.com/in/ching-serena-fang/" class="author" target="_blank">
+											<span class="name">Serena Fang</span>
+											<img src="images/cf82_2.jpg" alt="Serena Fang" />
+										  </a>
+										  
+									</div>
+								</header>
+								<span class="image featured"><img src="images/cover_bank.jpg" alt="" /></span>
+								
+								<blockquote>
+									<em>
+										The goal: figure out which customers bring the most value—and how to tailor rewards and retention strategies to each group.
+									</em>
+								  </blockquote>
+							
+								  <p><b>The Business Question</b><br>The bank wanted to sharpen its loyalty rewards program. Not everyone should get premium perks—and guessing isn’t a strategy. We needed a reliable, data-driven way to:
+									<br>• Rank customers by value
+									<br>• Understand behavior patterns
+									<br>• Target rewards that actually make sense
+								</p>
+								<p><b>The Dataset: 6 Months, 8,900 Customers</b><br>We had six months of behavioral data for 8,900 active credit card holders. Each row was a customer, with variables like:
+									<ul class="code-label-list">
+									<li><code>PURCHASES</code>: total dollar amount spent</li>
+									<li><code>PURCHASES_TRX</code>: number of transactions</li>
+									<li><code>CREDIT_LIMIT</code>: their credit cap</li>
+									<li><code>PAYMENTS</code>: what they actually paid</li>
+									<li><code>MINIMUM_PAYMENTS</code>: what they <em>had</em> to pay</li>
+									  </ul>
+								</p>
+								<p><b>The Framework: RFM, But Customized</b><br>RFM usually stands for Recency, Frequency, Monetary. I adapted it to reflect banking behavior:
+									<table class="metrics-table">
+										<thead>
+										  <tr>
+											<th>Metric</th>
+											<th>What It Captures</th>
+											<th>Formula</th>
+										  </tr>
+										</thead>
+										<tbody>
+										  <tr>
+											<td><strong>Activity</strong></td>
+											<td>How often they transact</td>
+											<td><code>PURCHASES_TRX</code></td>
+										  </tr>
+										  <tr>
+											<td><strong>Spending</strong></td>
+											<td>How much credit they use</td>
+											<td><code>PURCHASES</code> / <code>CREDIT_LIMIT</code></td>
+										  </tr>
+										  <tr>
+											<td><strong>Discipline</strong></td>
+											<td>How responsibly they pay</td>
+											<td><code>PAYMENTS</code> / <code>MINIMUM_PAYMENTS</code></td>
+										  </tr>
+										</tbody>
+									  </table>
+									  <span class="image featured"><img src="images/bank_RFM.jpg" alt="" /></span>
+								</p>
+								<p><b>The Segments: Who’s Who in the Portfolio</b><br>Using R, I grouped customers into clear, actionable clusters:
+									<b>1. Loyal High-Value Customers</b>
+									<br>• High activity, high spending, high payment discipline
+									<br>• These are your VIPs. They deserve the perks—and protect your bottom line.
+									<b>2. Growing Potential Customers</b>
+									<br>• Decent activity and spending, solid discipline
+									<br>• With a little nudge (targeted offers), they could move up.
+									<b>3. Occasional High Spenders</b>
+									<br>• Spend big but transact rarely.									
+									<br>• A valuable segment for big-ticket promotions.
+									<b>4. High Spenders with Risk</b>
+									<br>• Spend a lot, often—but barely meet payment minimums									
+									<br>• Red flag. May require credit limit reviews or intervention.
+									<span class="image featured"><img src="images/bank_segment.jpg" alt="" /></span>
+								</p>
+
+								<p><b>Tools & Code</b><br>Everything was done in R, including data prep, scoring, and segmentation.
+									<br>These details give teams direction. It’s not just "optimize the funnel." It's "optimize Level 3 for Safari users in the US." That’s where money gets saved—or made.
+									<div class="code-wrapper">
+										<pre><code class="language-r">
+		-- Calculate payment discipline --
+		data$payment_ratio <- data$PAYMENTS / data$MINIMUM_PAYMENTS
+									  
+		-- Calculate spending level --
+		data$credit_usage <- data$PURCHASES / data$CREDIT_LIMIT
+									  
+		-- Score each metric --
+		data$activity_score <- ntile(data$PURCHASES_TRX, 5)
+		data$spending_score <- ntile(data$credit_usage, 5)
+		data$discipline_score <- ntile(data$payment_ratio, 5)
+									  
+		-- Combine for segmentation --
+		data$rfm_score <- paste(data$activity_score,
+		data$spending_score,
+		data$discipline_score, sep = "-")
+										</code></pre>
+									  </div>
+								</p>
+
+								<p><b>💡 What This Project Taught Me</b><br>Beyond just R skills, this project pushed me to:
+									<br>• Translate business needs into analytical frameworks
+									<br>• Make segmentation actionable, not just academic
+									<br>• Think critically about how banks balance value vs. risk
+									<br>RFM is powerful—but this also reminded me of its limits. It’s a snapshot, not a story over time. For the next step, I’d bring in CLV modeling, time-series behavior, and maybe layer in demographic or credit score data.
+								</p>
+								
+								<p><b>✅ Impact</b><br>By surfacing segments with clear behavioral traits, this project made it easier for the bank to:
+									<br>• Target rewards more efficiently
+									<br>• Prioritize acquisition of high-discipline, high-activity users				
+									<br>• Flag risky profiles before they become a problemTranslate business needs into analytical frameworks
+								</p>
+							
+								<footer>
+									<ul class="stats">
+										<li><a href="index.html#Bank-project"> ← Back to Projects</a></li>
+									</ul>
+								</footer>
+							</article>
+
+					</div>
+
+				<!-- Footer 
+					<section id="footer">
+						<ul class="icons">
+							<li><a href="#" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
+							<li><a href="#" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
+							<li><a href="#" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
+							<li><a href="#" class="icon solid fa-rss"><span class="label">RSS</span></a></li>
+							<li><a href="#" class="icon solid fa-envelope"><span class="label">Email</span></a></li>
+						</ul>
+						<p class="copyright">&copy; Untitled. Design: <a href="http://html5up.net">HTML5 UP</a>. Images: <a href="http://unsplash.com">Unsplash</a>.</p>
+					</section> -->
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="assets2/js/jquery.min.js"></script>
+			<script src="assets2/js/browser.min.js"></script>
+			<script src="assets2/js/breakpoints.min.js"></script>
+			<script src="assets2/js/util.js"></script>
+			<script src="assets2/js/main.js"></script>
+
+	</body>
+</html>

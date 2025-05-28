@@ -1,0 +1,295 @@
+<!DOCTYPE HTML>
+<!--
+	Future Imperfect by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Serena Fang | Business Analyst Portfolio </title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets2/css/main.css" />
+		<!-- Prism Core + SQL Language -->
+		<link href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/themes/prism.css" rel="stylesheet" />
+		<script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/prism.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-sql.min.js"></script>
+
+	</head>
+	<body class="single is-preload">
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Header -->
+					<header id="header">
+						<h1><a href="index.html#SQLOlympic-project">Serena Fang | Business Analyst Portfolio</a></h1>
+						<!--
+						<nav class="links">
+							<ul>
+								<li><a href="#">Lorem</a></li>
+								<li><a href="#">Ipsum</a></li>
+								<li><a href="#">Feugiat</a></li>
+								<li><a href="#">Tempus</a></li>
+								<li><a href="#">Adipiscing</a></li>
+							</ul>
+						</nav>-->
+						<nav class="main">
+							<ul>
+								<li class="search">
+									<a class="fa-search" href="#search">Search</a>
+									<form id="search" method="get" action="#">
+										<input type="text" name="query" placeholder="Search" />
+									</form>
+								</li>
+								<li class="menu">
+									<a class="fa-bars" href="#menu">Menu</a>
+								</li>
+							</ul>
+						</nav>
+					</header>
+					
+
+				 <!-- Menu -->
+					<section id="menu"> 
+
+						<!-- Search -->
+						 	<section>
+								<form class="search" method="get" action="#">
+									<input type="text" name="query" placeholder="Search" />
+								</form>
+							</section> 
+
+						<!-- Links -->
+						 <section>
+								<ul class="links">
+									<li>
+										<a href="#">
+											<h3>Lorem ipsum</h3>
+											<p>Feugiat tempus veroeros dolor</p>
+										</a>
+									</li>
+									<li>
+										<a href="#">
+											<h3>Dolor sit amet</h3>
+											<p>Sed vitae justo condimentum</p>
+										</a>
+									</li>
+									<li>
+										<a href="#">
+											<h3>Feugiat veroeros</h3>
+											<p>Phasellus sed ultricies mi congue</p>
+										</a>
+									</li>
+									<li>
+										<a href="#">
+											<h3>Etiam sed consequat</h3>
+											<p>Porta lectus amet ultricies</p>
+										</a>
+									</li>
+								</ul>
+							</section> 
+
+						<!-- Actions -->
+							<section>
+								<ul class="actions stacked">
+									<li><a href="#" class="button large fit">Log In</a></li>
+								</ul>
+							</section> 
+
+					</section> 
+
+				<!-- Main -->
+					<div id="main">
+
+						<!-- Post -->
+							<article class="post">
+								<header>
+									<div class="title">
+										<h2>Unveiling the Secrets Behind Olympics — <br>What Really Wins Medals</h2>
+										<p>SQL | Database & Visualization | Data Storytelling</p>
+									</div>
+									<div class="meta">
+										<time class="published" datetime="2024-08">August, 2024</time>
+										<a href="https://www.linkedin.com/in/ching-serena-fang/" class="author" target="_blank">
+											<span class="name">Serena Fang</span>
+											<img src="images/cf82_2.jpg" alt="Serena Fang" />
+										  </a>
+										  
+									</div>
+								</header>
+								<span class="image featured"><img src="images/cover_SQLOlympic.jpg" alt="" /></span>
+								
+								<blockquote>
+									<em>
+										This wasn’t just a data query project. It became an exercise in debugging messy reality and turning raw Olympic stats into strategic insights.
+									</em>
+								  </blockquote>
+								  
+								<p>When I started this project, the goal was simple: use SQL to explore trends in Summer Olympic performance from 2000 to 2020. What I didn’t expect? Just how messy the data would be—and how much I’d grow as a problem-solver by cleaning it up.									
+								</p>
+								<p><b>Challenge #1: The Data Looked Clean—It Wasn’t</b><br>This project wasn’t about showcasing technical flair. It was about making metrics actually useful. I built this dashboard with a simple goal: help non-technical teams quickly understand what’s working—and what’s not—across their digital campaigns.
+									<br>Right out of the gate, the data looked okay. But the moment I started querying medal counts by country, I noticed the totals were way off. Here’s why:
+									<br>• Team names weren’t standardized (e.g. “Brazil-1”, “Brazil-2”).
+									<br>• Sports were labeled inconsistently (e.g. “equestrian” vs “equestrianism”).									
+									<br>• ‘Host Country’ wasn’t even in the dataset—just city names.							
+									</p>
+								<div class="title">
+									<p><b>✅ Fix: Data Standardization & Enrichment</b></p>
+								</div>
+									<p><div class="code-wrapper">
+									<pre><code class="language-sql">
+		-- Clean team names --
+		UPDATE athletes
+		SET Team = REPLACE(Team, '-1', '');
+									  
+		-- Standardize sport names --
+		UPDATE events
+		SET Sport = 'Equestrian'
+		WHERE Sport IN ('Equestrianism', 'Equestrian');
+		
+		-- Add host country using a reference table --
+		SELECT a.*, b.HostCountry
+		FROM events a
+		JOIN city_country_ref b ON a.HostCity = b.City;						  
+								</code></pre>
+								</div></p>								 		 						
+								<div class="title">
+								<p><b>🥇 Who’s Winning the Medal Race?</b>
+								<br>Once the data was clean, I wrote SQL queries to calculate total medals, weighted points, and ranks across years.
+								</p></div>
+								<p><div class="code-wrapper">
+								<pre><code class="language-sql">
+		SELECT Year, Team,
+  		  SUM(Gold) AS gold,
+  		  SUM(Silver) AS silver,
+  		  SUM(Bronze) AS bronze,
+ 		  SUM(Gold*3 + Silver*2 + Bronze*1) AS total_points
+		FROM event_medals
+		GROUP BY Year, Team
+		ORDER BY total_points DESC;					  
+								</code></pre>
+								</div></p>	
+								<span class="image featured"><img src="images/SQLOlymoic_medalrank.jpg" alt="" /></span>
+								
+								<div class="title">	
+								<p><b>🔍 Insight #1: Gender Trends</b>
+								<br>I ran gender-based queries to find where women outperformed men. Swimming and gymnastics led the charge.
+								</p></div>
+								<p><div class="code-wrapper">
+									<pre><code class="language-sql">
+		-- Gender medal proportion per sport
+		SELECT Sport,
+  		  SUM(CASE WHEN Sex = 'F' THEN 1 ELSE 0 END) * 100.0 / COUNT(*) AS female_percentage
+		FROM athletes_medals
+		GROUP BY Sport
+		ORDER BY female_percentage DESC;			  
+								</code></pre>
+								</div></p>	
+								<span class="image featured"><img src="images/SQLOlymoic_gender.jpg" alt="" /></span>
+
+								<div class="title">	
+								<p><b>🔍 Insight #2: Age Tells a Story Too</b>
+								<br>Some sports are for seasoned vets. Others are for those who peak before 20. SQL helped me map it.
+								</p></div>
+								<p><div class="code-wrapper">
+									<pre><code class="language-sql">
+		SELECT Sport, ROUND(AVG(Age), 1) AS avg_age
+		FROM athletes_medals
+		GROUP BY Sport
+		ORDER BY avg_age DESC;
+								</code></pre>
+								</div></p>	
+								<span class="image featured"><img src="images/SQLOlymoic_age.jpg" alt="" /></span>
+								
+								<div class="title">	
+								<p><b>🔍 Insight #3: Hosting Gives a Real Edge</b>
+									<br>I created a new host mapping and compared medal counts in host vs. non-host years.
+									</p></div>
+									<p><div class="code-wrapper">
+										<pre><code class="language-sql">
+		-- Host vs non-host performance comparison -- 
+		WITH medal_counts AS (
+ 		  SELECT Year, Team,
+    		SUM(Gold + Silver + Bronze) AS total_medals,
+    		CASE WHEN is_host = 1 THEN 'Host' ELSE 'Non-Host' END AS host_flag
+  		  FROM country_year_medals
+  		  GROUP BY Year, Team, host_flag
+		)
+SELECT Team,
+  		  AVG(CASE WHEN host_flag = 'Host' THEN total_medals ELSE NULL END) AS avg_host,
+  		  AVG(CASE WHEN host_flag = 'Non-Host' THEN total_medals ELSE NULL END) AS avg_non_host
+		FROM medal_counts
+		GROUP BY Team;
+									</code></pre>
+									</div></p>	
+									<span class="image featured"><img src="images/SQLOlymoic_host.jpg" alt="" /></span>
+									
+									<div class="title">	
+									<p><b>🔍 Insight #4: Returning Athletes Get Better</b>
+										<br>I used <b>window functions</b> to track returning athletes and compare performance between games.
+										</p></div>
+										<p><div class="code-wrapper">
+											<pre><code class="language-sql">
+		-- Calculate improvement points between Olympics --
+		WITH ranked AS (
+  		  SELECT Name, Year, SUM(Gold*3 + Silver*2 + Bronze) AS points,
+         		 RANK() OVER (PARTITION BY Name ORDER BY Year) AS olympic_order
+  		  FROM athletes_medals
+ 		  GROUP BY Name, Year
+		),
+		delta AS (
+  		  SELECT a.Name, a.Year AS prev_year, b.Year AS curr_year,
+         		(b.points - a.points) AS improvement
+  		  FROM ranked a
+  		  JOIN ranked b ON a.Name = b.Name AND b.olympic_order = a.olympic_order + 1
+		)
+		SELECT Name, improvement
+		FROM delta
+		WHERE improvement > 0
+		ORDER BY improvement DESC;
+										</code></pre>
+										</div></p>	
+										<span class="image featured"><img src="images/SQLOlymoic_return.jpg" alt="" /></span>
+										
+										<div class="title">	
+											<p><b>💡 What I Took Away</b>
+											<br>This wasn’t just a SQL portfolio piece. It pushed me to:										
+											<br>• Clean complex, messy, multi-table datasets								
+											<br>• Write layered queries with <b>CTEs, CASE logic, and window functions</b>											
+											<br>• Think critically about what the data actually means	
+											<br>It also showed me how much impact a clean, thoughtful analysis can have. This kind of work doesn’t just summarize history—it helps countries, coaches, and athletes make better decisions for the future.
+											</p></div>
+							
+								<footer>
+									<ul class="stats">
+										<li><a href="index.html#SQLOlympic-project"> ← Back to Projects</a></li>
+									</ul>
+								</footer>
+							</article>
+
+					</div>
+
+				<!-- Footer 
+					<section id="footer">
+						<ul class="icons">
+							<li><a href="#" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
+							<li><a href="#" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
+							<li><a href="#" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
+							<li><a href="#" class="icon solid fa-rss"><span class="label">RSS</span></a></li>
+							<li><a href="#" class="icon solid fa-envelope"><span class="label">Email</span></a></li>
+						</ul>
+						<p class="copyright">&copy; Untitled. Design: <a href="http://html5up.net">HTML5 UP</a>. Images: <a href="http://unsplash.com">Unsplash</a>.</p>
+					</section>-->
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="assets2/js/jquery.min.js"></script>
+			<script src="assets2/js/browser.min.js"></script>
+			<script src="assets2/js/breakpoints.min.js"></script>
+			<script src="assets2/js/util.js"></script>
+			<script src="assets2/js/main.js"></script>
+
+	</body>
+</html>
